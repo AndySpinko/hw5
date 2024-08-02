@@ -7,19 +7,20 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LuckyTicketTest {
 
     @DisplayName("Задание 7. Счастливый билет")
     @ParameterizedTest
     @MethodSource("cases")
-    public void luckyTicketProbabilityTest(int serialNumberLength, double probability) {
-        throw new UnsupportedOperationException("реализуй меня");
+    public void luckyTicketProbabilityTest(int serialNumberLength) {
+
+        var moscow = new MscLuckyTicket().isLucky(String.valueOf(serialNumberLength));
+        System.out.println("moscow tickets probability " + moscow);
+        var spb = new SpbLuckyTicket().isLucky(String.valueOf(serialNumberLength));
+        System.out.println("spb tickets probability " + spb);
     }
 
     private static Stream<Arguments> cases() {
-        throw new UnsupportedOperationException("реализуй меня");
+        return Stream.of(111111, 323323, 139423, 757232, 3243, 5454).map(Arguments::of);
     }
-
 }
